@@ -1,4 +1,4 @@
-
+package ru.ozon;
 
 public class Main {
 
@@ -16,6 +16,7 @@ public class Main {
 				char[] tap = words[i].toCharArray();
 				lettter1[i][j] = tap[j];
 				System.out.println(lettter1[i][j]);
+
 			}
 		}
 		

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="195.66666666666666" y="136.0">ru.shop.dns.appmanager.AppManager</node>
+    <node x="243.16666666666666" y="306.0">ru.shop.dns.tests.TestsBase</node>
+    <node x="330.7380952380952" y="410.0">ru.shop.dns.tests.Tests02ChangeCount</node>
+    <node x="255.0" y="11.0">ru.shop.dns.appmanager.NavigationHelper</node>
+    <node x="0.0" y="0.0">ru.shop.dns.appmanager.SearchHelper</node>
+    <node x="110.73809523809521" y="410.0">ru.shop.dns.tests.Tests01SearchAndPut</node>
+    <node x="451.0" y="11.0">ru.shop.dns.appmanager.SessionHelper</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ru.shop.dns.tests.Tests02ChangeCount" target="ru.shop.dns.tests.TestsBase">
+      <point x="-47.99999999999997" y="-15.0" />
+      <point x="378.73809523809524" y="390.0" />
+      <point x="331.29166666666663" y="390.0" />
+      <point x="17.625" y="27.0" />
+    </edge>
+    <edge source="ru.shop.dns.tests.Tests01SearchAndPut" target="ru.shop.dns.tests.TestsBase">
+      <point x="50.0" y="-15.0" />
+      <point x="260.7380952380952" y="390.0" />
+      <point x="296.04166666666663" y="390.0" />
+      <point x="-17.625" y="27.0" />
+    </edge>
+    <edge source="ru.shop.dns.appmanager.AppManager" target="ru.shop.dns.appmanager.NavigationHelper">
+      <point x="-14.75" y="-60.0" />
+      <point x="298.91666666666663" y="116.0" />
+      <point x="284.3333333333333" y="116.0" />
+      <point x="-58.66666666666666" y="27.0" />
+    </edge>
+    <edge source="ru.shop.dns.tests.TestsBase" target="ru.shop.dns.appmanager.AppManager">
+      <point x="-35.25" y="-27.0" />
+      <point x="278.41666666666663" y="281.0" />
+      <point x="254.66666666666666" y="281.0" />
+      <point x="-59.0" y="60.0" />
+    </edge>
+    <edge source="ru.shop.dns.appmanager.AppManager" target="ru.shop.dns.appmanager.SessionHelper">
+      <point x="73.75" y="-60.0" />
+      <point x="387.41666666666663" y="106.0" />
+      <point x="489.0" y="106.0" />
+      <point x="-38.0" y="27.0" />
+    </edge>
+    <edge source="ru.shop.dns.appmanager.AppManager" target="ru.shop.dns.appmanager.SearchHelper">
+      <point x="-103.25" y="-60.0" />
+      <point x="210.41666666666666" y="116.0" />
+      <point x="39.166666666666686" y="116.0" />
+      <point x="-78.33333333333331" y="38.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="277.5" y="45.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,19 @@
+apply plugin: 'java'
+
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.testng:testng:7.4.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+    implementation 'junit:junit:4.12'
+}
+
+test {
+    useJUnit()  //useTestNG()
+}

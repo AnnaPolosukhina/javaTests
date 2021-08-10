@@ -6,20 +6,19 @@ public class Tests01SearchAndPut extends TestsBase {
 
    ///////////////////////////////////////////////////////////////////////////////////////
    @Test
-   public void login() {
+   public void searchAndPut() {
 
       app.resizeTo1936();
-      app.getSearchHelper().searchItem("флешка");
-      app.getSearchHelper().putInBasket(5);
-      app.getSearchHelper().searchItem("Сковорода OneTwo");
-      app.getSearchHelper().putInBasket(1);
-      app.getSearchHelper().searchItem("Чайник");
-      app.getSearchHelper().putInBasket(18);
+      app.getSearchHelper().searchAndPut("Флешка", 4);
+      app.getSearchHelper().searchAndPut("Сковорода OneTwo", 1);
+      app.getSearchHelper().searchAndPut("Чайник", 18);
       app.getNavigationHelper().goToBasket();
       app.assertResults();
       app.getNavigationHelper().goToMainPage();
 
    }
+
+
    ///////////////////////////////////////////////////////////////////////////////////////////
 
 }

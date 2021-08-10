@@ -7,28 +7,25 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.shop.dns.model.ItemData;
 
-public class SearchHelper {
+public class SearchHelper extends HelperBase {
 
-   private WebDriver driver;
    String partOfXpathItemInSearchList = "(//div[@data-id=\"product\"])";
 
    public SearchHelper(WebDriver driver) {
-      this.driver = driver;
+      super(driver);
    }
 
    public void putInBasket(int num) {
       ItemData data = new ItemData(getNameItem(num), getLinkToItem(num), getPrice(num), getBuyButton(num));
-      driver.findElement(By.xpath(data.getButtonItem2())).click();
+      click(By.xpath(data.getButtonItem2()));
       System.out.println(data);
    }
 
    public String getNameItem(int i) {
       String xpath = partOfXpathItemInSearchList + '[' + i + ']' + "//a[@class=\"catalog-product__name ui-link ui-link_black\"]/span";
-      WebDriverWait wait = new WebDriverWait(driver, 10);
-      wait.until(ExpectedConditions.elementToBeClickable
-              (By.xpath(xpath)));
+      wait(xpath);
 
-      String fullName = driver.findElement(By.xpath(xpath)).getText();
+      String fullName = getText(xpath);
       String[] singleWords  = fullName.split("\\s");
       String threeWordName  = singleWords [0] + " " + singleWords [1] + " " + singleWords [2];
 
@@ -38,7 +35,7 @@ public class SearchHelper {
 
    public String getLinkToItem(int i) {
       String xpath = partOfXpathItemInSearchList + '[' + i + ']' + "//a[@class=\"catalog-product__name ui-link ui-link_black\"]";
-      return driver.findElement(By.xpath(xpath)).getAttribute("href");
+      return getAttribute(xpath, "href");
    }
 
    public int getPrice(int i) {
@@ -58,12 +55,15 @@ public class SearchHelper {
       String xpathToSearchString = "//*[@id='header-search']//input";
       String xpathToSearchButton = "//*[@id='header-search']//span[contains(@class, 'ui-input-search__icon_search')]";
 
-      WebDriverWait wait = new WebDriverWait(driver, 10);
-      wait.until(ExpectedConditions.elementToBeClickable
-              (By.xpath(xpathToSearchString)));
-      driver.findElement(By.xpath(xpathToSearchString)).clear();
-      driver.findElement(By.xpath(xpathToSearchString)).sendKeys(wantToFind);
-      driver.findElement(By.xpath(xpathToSearchButton)).click();
+      wait(xpathToSearchString);
+      type(By.xpath(xpathToSearchString), wantToFind);
+      click(By.xpath(xpathToSearchButton));
 
    }
+
+   public void searchAndPut(String item, int num) {
+      searchItem(item);
+      putInBasket(num);
+   }
+
 }

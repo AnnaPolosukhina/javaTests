@@ -39,7 +39,7 @@ public class SearchHelper extends HelperBase {
    }
 
    public int getPrice(int i) {
-      String xpath = partOfXpathItemInSearchList + '[' + i + ']' + "//div[@class=\"product-buy__price\"]";
+      String xpath = partOfXpathItemInSearchList + '[' + i + ']' + "//div[contains(@class, \"product-buy__price\")]";
       WebElement tmpPriceItem = driver.findElement(By.xpath(xpath));
       String[] arr = tmpPriceItem.getText().split("\n");
       int price = (Integer.parseInt(arr[0].replaceAll("[^0-9]", "")));

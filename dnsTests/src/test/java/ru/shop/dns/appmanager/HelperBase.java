@@ -1,6 +1,7 @@
 package ru.shop.dns.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,8 +19,11 @@ public class HelperBase {
 
    protected void type(By locator, String text) {
       click(locator);
-      driver.findElement(locator).clear();
-      driver.findElement(locator).sendKeys(text);
+      if (!driver.findElement(locator).getAttribute("value").equals(text)) {
+         driver.findElement(locator).clear();
+         driver.findElement(locator).sendKeys(text);
+      }
+
    }
 
    protected String getAttribute(String xpath, String attribute) {
@@ -35,4 +39,21 @@ public class HelperBase {
       wait.until(ExpectedConditions.elementToBeClickable
               (By.xpath(xpath)));
    }
+
+   protected void pause(int i) {
+      try {
+         Thread.sleep(i * 1000);
+      } catch (InterruptedException ex) {
+         Thread.currentThread().interrupt();
+      }
+   }
+
+   public boolean isAlertPresent() {
+      try {  driver.switchTo().alert();
+         return true;
+      } catch (NoAlertPresentException e) {
+         return false;
+      }
+   }
+
 }

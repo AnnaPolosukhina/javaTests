@@ -8,13 +8,12 @@ public class Tests01SearchAndPut extends TestsBase {
    @Test
    public void searchAndPut() {
 
-      app.resizeTo1936();
-      app.getSearchHelper().searchAndPut("Флешка", 4);
-      app.getSearchHelper().searchAndPut("Сковорода OneTwo", 1);
-      app.getSearchHelper().searchAndPut("Чайник", 18);
-      app.getNavigationHelper().goToBasket();
-      app.assertResults();
-      app.getNavigationHelper().goToMainPage();
+      app.getSearch().searchAndPut( app.getVar().getRandomItem(), 4);
+      app.getSearch().searchAndPut(app.getVar().getRandomItem(), 1);
+      app.getSearch().searchAndPut(app.getVar().getRandomItem(), 18);
+      app.getNavigate().goToBasket();
+      app.getNavigate().goToMainPage();
+      //app.getVar().getRandomItem();
 
    }
 

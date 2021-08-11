@@ -6,15 +6,15 @@ public class Tests02ChangeCount extends TestsBase {
 
    ///////////////////////////////////////////////////////////////////////////////////////
    @Test
-   public void login() {
+   public void changeCount() {
 
-      app.resizeTo1936();
-      app.getSearchHelper().searchItem("флешка");
-      app.getSearchHelper().putInBasket(2);
+      app.getSearch().searchAndPut(app.getVar().surname(), 2);
+      app.getNavigate().goToBasket();
+      app.getBasket().changeCount();
+      app.getBasket().checkChangeCountItem();
+      app.getBasket().checkChangesPrice();
 
-      app.getNavigationHelper().goToBasket();
-      app.assertResults();
-      app.getNavigationHelper().goToMainPage();
+      
 
    }
    ///////////////////////////////////////////////////////////////////////////////////////////

@@ -10,9 +10,8 @@ public class NavigationHelper extends HelperBase {
    }
 
    public void goToMainPage() {
-      if(Selenium.isElementPresent((By.xpath(xpathToMain)))){
-         return;
-      }
+      //if(Selenium.isElementPresent((By.xpath(xpathToMain)))){
+      //   return; }
       String xpathToMain = "//a[@id=\"header-logo\"]";
       wait(xpathToMain);
       click(By.xpath(xpathToMain));

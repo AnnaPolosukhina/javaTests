@@ -10,17 +10,19 @@ public class NavigationHelper extends HelperBase {
    }
 
    public void goToMainPage() {
-      //if(Selenium.isElementPresent((By.xpath(xpathToMain)))){
-      //   return; }
+
       String xpathToMain = "//a[@id=\"header-logo\"]";
+      if(driver.findElement((By.xpath(xpathToMain))).isEnabled()){
       wait(xpathToMain);
       click(By.xpath(xpathToMain));
+      }
    }
 
    public void goToBasket() {
       String xpathToBasket = "//span[@class='cart-link__badge']";
-      wait(xpathToBasket);
-      click(By.xpath(xpathToBasket));
-
+      if(driver.findElement((By.xpath(xpathToBasket))).isEnabled()) {
+         wait(xpathToBasket);
+         click(By.xpath(xpathToBasket));
+      }
    }
 }

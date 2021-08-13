@@ -16,10 +16,10 @@ public class BasketHelper extends HelperBase {
       String xpathCount = "//div[@class='total-amount__count'][contains(.,'Итого')]";
       wait(xpathPlus);
       click(By.xpath(xpathPlus));
-      pause(2);
+      pause(4);
       Assert.assertEquals(getText(xpathCount),"Итого: 2 товара");
       click(By.xpath(xpathMinus));
-      pause(2);
+      pause(4);
       Assert.assertEquals(getText(xpathCount),"Итого: 1 товар");
 
    }

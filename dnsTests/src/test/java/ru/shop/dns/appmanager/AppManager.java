@@ -23,7 +23,6 @@ public class AppManager {
       driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
       driver.manage().timeouts().pageLoadTimeout(8000, TimeUnit.MILLISECONDS);
       driver.manage().timeouts().setScriptTimeout(3000, TimeUnit.MILLISECONDS);
-      WebDriverWait wait = new WebDriverWait(driver,10);
       driver.get("https://www.dns-shop.ru/");
       driver.manage().window().setSize(new Dimension(1936, 1056));
       searchHelper = new SearchHelper(driver);

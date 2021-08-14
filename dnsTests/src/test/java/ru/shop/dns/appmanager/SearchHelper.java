@@ -66,7 +66,6 @@ public class SearchHelper extends HelperBase {
 
    public int getNumberAllResults() {
       String xpathToNumberAllResults = "//div[contains(@class,'products-page__title')]//span[@class='products-count']";
-      Assert.assertTrue(isElementPresent(By.xpath(xpathToNumberAllResults)));
       WebElement element = findElement(By.xpath(xpathToNumberAllResults));
       String str = element.getText();
       int num = (Integer.parseInt(str.replaceAll("[^0-9]", "")));
@@ -82,6 +81,22 @@ public class SearchHelper extends HelperBase {
    }
 
    public boolean checkNoResults() {
+
+      String xpathCheckNoResults = "//h4[contains(@class,'empty-search-results')]";
+      Assert.assertTrue(isElementPresent(By.xpath(xpathCheckNoResults)));
+      WebElement element = findElement(By.xpath(xpathCheckNoResults));
+      String str = element.getText();
+      if(str.contains("Странно, но ничего нет")){return true;}
+      return false;
+   }
+
+   public boolean checkNoResults2() {
+
+      String xpathCheckNoResults = "//h5[contains(@class, 'empty-search-results')]";
+      Assert.assertTrue(isElementPresent(By.xpath(xpathCheckNoResults)));
+      WebElement element = findElement(By.xpath(xpathCheckNoResults));
+      String str = element.getText();
+      if(str.contains("К сожалению, по вашему запросу ничего не найдено")){return true;}
       return false;
    }
 

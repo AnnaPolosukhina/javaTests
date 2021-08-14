@@ -6,9 +6,15 @@
         <classes>
             <class name="ru.shop.dns.tests.Test01SuccessfulSearch">
                 <methods>
-                    <include name="test001CheckSuccessfulSearch"/>
-                    <include name="test002CheckSuccessfulSearch"/>
-                    <include name="test003CheckSuccessfulSearch"/>
+                    <include name="test0101CheckSuccessfulSearch"/>
+                    <include name="test0102CheckSuccessfulSearch"/>
+                    <include name="test0103CheckSuccessfulSearch"/>
+                </methods>
+            </class>
+            <class name="ru.shop.dns.tests.Test02NoSearchResults">
+                <methods>
+                    <include name="test0201CheckNoSearchResults"/>
+                    <include name="test0202CheckNoSearchResults"/>
                 </methods>
             </class>
         </classes>

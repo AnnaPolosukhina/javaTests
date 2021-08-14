@@ -68,11 +68,15 @@ public class SearchHelper extends HelperBase {
    }
 
    public int getNumberAllResults() {
-      return 5;
+      String xpathToNumberAllResults = "//div[@class='products-page__title']//span[@class='products-count']";
+      WebElement element = driver.findElement(By.xpath(xpathToNumberAllResults));
+      String str = element.getText();
+      int num = (Integer.parseInt(str.replaceAll("[^0-9]", "")));
+      return num;
    }
 
    public int getNumberResultsInList() {
-      return 6;
+      return getAllNamesItem().size();
    }
 
    public void checkResultsName(String request) {

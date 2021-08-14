@@ -35,7 +35,7 @@ public class AppManager {
 
    public void stop() {
 
-      //driver.quit();
+      driver.quit();
    }
 
    public SearchHelper getSearch() {

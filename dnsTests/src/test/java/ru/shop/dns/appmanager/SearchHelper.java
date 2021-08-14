@@ -68,7 +68,7 @@ public class SearchHelper extends HelperBase {
    }
 
    public int getNumberAllResults() {
-      String xpathToNumberAllResults = "//div[@class='products-page__title']//span[@class='products-count']";
+      String xpathToNumberAllResults = "//div[contains(@class,'products-page__title')]//span[@class='products-count']";
       WebElement element = driver.findElement(By.xpath(xpathToNumberAllResults));
       String str = element.getText();
       int num = (Integer.parseInt(str.replaceAll("[^0-9]", "")));
@@ -105,7 +105,7 @@ public class SearchHelper extends HelperBase {
    }
 
    public ArrayList<String> getAllNamesItem() {
-      String link = partOfXpathItemInSearchList +"//div[@class=\\\"catalog-products view-simple\\\"]/div[@data-id=\\\"product\\\"]/a[@class=\\\"catalog-product__name ui-link ui-link_black\\\"]/span\"";
+      String link = partOfXpathItemInSearchList +"//a[@class=\"catalog-product__name ui-link ui-link_black\"]/span";
       List <WebElement> namesItem = driver.findElements(By.xpath(link));
       ArrayList <String> namesItem2 = new ArrayList<String>();
       for(WebElement element: namesItem){

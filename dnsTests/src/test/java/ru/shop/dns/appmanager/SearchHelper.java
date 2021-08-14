@@ -3,9 +3,10 @@ package ru.shop.dns.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.shop.dns.model.ItemData;
+import ru.shop.dns.model.ItemInSearchResultsData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchHelper extends HelperBase {
 
@@ -16,8 +17,8 @@ public class SearchHelper extends HelperBase {
    }
 
    public void putInBasket(int num) {
-      ItemData data = new ItemData(getNameItem(num), getLinkToItem(num), getPrice(num), getBuyButton(num));
-      click(By.xpath(data.getButtonItem2()));
+      ItemInSearchResultsData data = new ItemInSearchResultsData(getNameItem(num), getLinkToItem(num), getPrice(num), getBuyButton(num));
+      click(By.xpath(data.getButtonItem()));
       System.out.println(data);
    }
 
@@ -66,4 +67,46 @@ public class SearchHelper extends HelperBase {
       putInBasket(num);
    }
 
+   public int getNumberAllResults() {
+      return 5;
+   }
+
+   public int getNumberResultsInList() {
+      return 6;
+   }
+
+   public void checkResultsName(String request) {
+   }
+
+   public boolean checkNoResults() {
+      return false;
+   }
+
+   public void typeRequest(String request) {
+   }
+
+   public void clearRequest() {
+   }
+
+   public boolean checkIsSearchStringEmpty() {
+      return true;
+   }
+
+   public boolean checkSearchHistory(String[] requestReverse) {
+      return true;
+   }
+
+   public boolean checkSearchHistory(String requestReverse) {
+      return true;
+   }
+
+   public ArrayList<String> getAllNamesItem() {
+      String link = partOfXpathItemInSearchList +"//div[@class=\\\"catalog-products view-simple\\\"]/div[@data-id=\\\"product\\\"]/a[@class=\\\"catalog-product__name ui-link ui-link_black\\\"]/span\"";
+      List <WebElement> namesItem = driver.findElements(By.xpath(link));
+      ArrayList <String> namesItem2 = new ArrayList<String>();
+      for(WebElement element: namesItem){
+         namesItem2.add(element.getText());
+      }
+      return namesItem2;
+   }
 }

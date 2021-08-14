@@ -1,20 +1,22 @@
 package ru.shop.dns.tests;
 
-import org.junit.After;
-import org.junit.Before;
+
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import ru.shop.dns.appmanager.AppManager;
 
 public class TestsBase {
 
    protected final AppManager app = new AppManager();  //делегирование
 
-   @Before
+   @BeforeSuite
    public void setUp() {
       app.init();
 
    }
 
-   @After
+   @AfterSuite
    public void tearDown() {
       app.stop();
    }

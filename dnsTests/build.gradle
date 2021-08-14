@@ -15,5 +15,7 @@ dependencies {
 }
 
 test {
-    useJUnit()  //useTestNG()
+    useTestNG () {
+     //   suites 'src/test/resources/testng.xml'
+    }
 }

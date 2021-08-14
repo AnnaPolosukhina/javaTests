@@ -1,6 +1,6 @@
 package ru.shop.dns.tests;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 import org.testng.Assert;
 
 public class Test04СheckSearchHistory extends TestsBase {

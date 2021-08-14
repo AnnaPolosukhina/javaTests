@@ -1,7 +1,8 @@
 package ru.shop.dns.tests;
 
-import org.junit.Test;
+
 import org.testng.Assert;
+import org.testng.annotations.Test;
 import sun.net.www.content.text.PlainTextInputStream;
 
 import java.util.ArrayList;
@@ -22,13 +23,11 @@ public class Test01SuccessfulSearch extends TestsBase {
 
    @Test
    public void test002CheckSuccessfulSearch() {
-      app.getSearch().searchItem(request);
       Assert.assertEquals(app.getSearch().getNumberResultsInList(), 18);
    }
 
    @Test
    public void test003CheckSuccessfulSearch() {
-      app.getSearch().searchItem(request);
 
       ArrayList<String> listItemsName = app.getSearch().getAllNamesItem();
       for (String name : listItemsName) {

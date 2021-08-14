@@ -13,7 +13,7 @@ public class NavigationHelper extends HelperBase {
 
       String xpathToMain = "//a[@id=\"header-logo\"]";
       if(driver.findElement((By.xpath(xpathToMain))).isEnabled()){
-      wait(xpathToMain);
+      wait(By.xpath(xpathToMain));
       click(By.xpath(xpathToMain));
       }
    }
@@ -21,7 +21,7 @@ public class NavigationHelper extends HelperBase {
    public void goToBasket() {
       String xpathToBasket = "//span[@class='cart-link__badge']";
       if(driver.findElement((By.xpath(xpathToBasket))).isEnabled()) {
-         wait(xpathToBasket);
+         wait(By.xpath(xpathToBasket));
          click(By.xpath(xpathToBasket));
       }
    }

@@ -1,11 +1,11 @@
 package ru.shop.dns.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import java.util.List;
 
 public class HelperBase {
    protected WebDriver driver;
@@ -14,11 +14,12 @@ public class HelperBase {
       this.driver = driver;
    }
 
-   protected void click(By locator) {
+   public void click(By locator) {
+      Assert.assertTrue(isElementPresent(locator));
       driver.findElement(locator).click();
    }
 
-   protected void type(By locator, String text) {
+   public void type(By locator, String text) {
       click(locator);
       if (!driver.findElement(locator).getAttribute("value").equals(text)) {
          driver.findElement(locator).clear();
@@ -27,21 +28,32 @@ public class HelperBase {
 
    }
 
-   protected String getAttribute(String xpath, String attribute) {
-      return driver.findElement(By.xpath(xpath)).getAttribute(attribute);
+   public String getAttribute(By locator, String attribute) {
+      Assert.assertTrue(isElementPresent(locator));
+      return driver.findElement(locator).getAttribute(attribute);
    }
 
-   protected String getText(String xpath) {
-      return driver.findElement(By.xpath(xpath)).getText();
+   public String getText(By locator) {
+      Assert.assertTrue(isElementPresent(locator));
+      return driver.findElement(locator).getText();
    }
 
-   protected void wait(String xpath) {
+   public WebElement findElement(By locator) {
+      Assert.assertTrue(isElementPresent(locator));
+      return driver.findElement(locator);
+   }
+   public List<WebElement> findElements(By locator) {
+      Assert.assertTrue(isElementPresent(locator));
+      return driver.findElements(locator);
+   }
+
+   public void wait(By locator) {
       WebDriverWait wait = new WebDriverWait(driver, 10);
       wait.until(ExpectedConditions.elementToBeClickable
-              (By.xpath(xpath)));
+              (locator));
    }
 
-   protected void pause(int i) {
+   public void pause(int i) {
       try {
          Thread.sleep(i * 1000);
       } catch (InterruptedException ex) {

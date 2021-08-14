@@ -14,20 +14,20 @@ public class Test01SuccessfulSearch extends TestsBase {
    String request = "Процессор AMD Ryzen";
 
    @Test
-   public void test01CheckSuccessfulSearch() {
+   public void test001CheckSuccessfulSearch() {
       app.getSearch().searchItem(request);
       Assert.assertTrue(app.getSearch().getNumberAllResults()>18);
 
    }
 
    @Test
-   public void test02CheckSuccessfulSearch() {
+   public void test002CheckSuccessfulSearch() {
       app.getSearch().searchItem(request);
       Assert.assertEquals(app.getSearch().getNumberResultsInList(), 18);
    }
 
    @Test
-   public void test03CheckSuccessfulSearch() {
+   public void test003CheckSuccessfulSearch() {
       app.getSearch().searchItem(request);
 
       ArrayList<String> listItemsName = app.getSearch().getAllNamesItem();

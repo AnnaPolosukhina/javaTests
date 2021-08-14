@@ -14,13 +14,13 @@ public class BasketHelper extends HelperBase {
       String xpathPlus = "//button[contains(@class, \"button_plus\")]";
       String xpathMinus = "//button[contains(@class, \"button_minus\")]";
       String xpathCount = "//div[@class='total-amount__count'][contains(.,'Итого')]";
-      wait(xpathPlus);
+      wait(By.xpath(xpathPlus));
       click(By.xpath(xpathPlus));
       pause(4);
-      Assert.assertEquals(getText(xpathCount),"Итого: 2 товара");
+      Assert.assertEquals(getText(By.xpath(xpathCount)),"Итого: 2 товара");
       click(By.xpath(xpathMinus));
       pause(4);
-      Assert.assertEquals(getText(xpathCount),"Итого: 1 товар");
+      Assert.assertEquals(getText(By.xpath(xpathCount)),"Итого: 1 товар");
 
    }
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="E:/!!!2021Work/GitHub/javaTests/dnsTests/src/test/java/ru/shop/dns/tests/Test01SuccessfulSearch.java">
+        <classes>
+            <class name="ru.shop.dns.tests.Test01SuccessfulSearch">
+                <methods>
+                    <include name="test001CheckSuccessfulSearch"/>
+                    <include name="test002CheckSuccessfulSearch"/>
+                    <include name="test003CheckSuccessfulSearch"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

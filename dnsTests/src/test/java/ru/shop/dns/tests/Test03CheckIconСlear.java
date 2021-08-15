@@ -8,7 +8,7 @@ public class Test03CheckIconСlear extends TestsBase {
    @Test
    public void test03CheckIconСlear() {
 
-      String request = "Процессор AMD Ryzen";
+      String request = "Что же мне найти";
       app.getSearch().typeRequest(request);
       app.getSearch().clearRequest();
       Assert.assertTrue(app.getSearch().checkIsSearchStringEmpty());

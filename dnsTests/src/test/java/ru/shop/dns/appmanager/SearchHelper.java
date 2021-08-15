@@ -133,8 +133,6 @@ public class SearchHelper extends HelperBase {
          String str = findElement(By.xpath(xpath+"["+(i+1)+"]")).getText();
          result[i] = str;
       }
-      System.out.println(requestReverse.toString());
-      System.out.println(result.toString());
 
       return Arrays.equals(requestReverse, result);
 

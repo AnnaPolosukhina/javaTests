@@ -6,7 +6,7 @@ import org.testng.Assert;
 public class Test03CheckIconСlear extends TestsBase {
 
    @Test
-   public void test03CheckIconСlear() {
+   public void test03CheckIconClear() {
 
       String request = "Что же мне найти";
       app.getSearch().typeRequest(request);

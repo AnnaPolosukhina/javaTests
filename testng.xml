@@ -17,6 +17,16 @@
                     <include name="test0202CheckNoSearchResults"/>
                 </methods>
             </class>
+            <class name="ru.shop.dns.tests.Test03CheckIconСlear">
+                <methods>
+                    <include name="test03CheckIconClear"/>
+                </methods>
+            </class>
+            <class name="ru.shop.dns.tests.Test04СheckSearchHistory">
+                <methods>
+                    <include name="test04CheckSearchHistory"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

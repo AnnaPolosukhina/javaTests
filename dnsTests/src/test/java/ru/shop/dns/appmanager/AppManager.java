@@ -1,21 +1,20 @@
 package ru.shop.dns.appmanager;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
 public class AppManager {
 
-   WebDriver driver;
-   private SessionHelper sessionHelper;
-   private NavigationHelper navigationHelper;
-   private SearchHelper searchHelper;
-   private BasketHelper basketHelper;
-   private Variables var;
+   public static final String BASE_URL = "https://www.dns-shop.ru";
+   public static WebDriver driver;
+   public SessionHelper sessionHelper;
+   public NavigationHelper navigationHelper;
+   public SearchHelper searchHelper;
+   public BasketHelper basketHelper;
+   public Variables var;
 
    public void init() {
       System.setProperty("webdriver.chrome.driver", "C:\\tools\\chromedriver.exe");
@@ -23,7 +22,6 @@ public class AppManager {
       driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
       driver.manage().timeouts().pageLoadTimeout(12000, TimeUnit.MILLISECONDS);
       driver.manage().timeouts().setScriptTimeout(3000, TimeUnit.MILLISECONDS);
-      driver.get("https://www.dns-shop.ru/");
       driver.manage().window().setSize(new Dimension(1936, 1056));
       searchHelper = new SearchHelper(driver);
       navigationHelper = new NavigationHelper(driver);
@@ -57,4 +55,7 @@ public class AppManager {
       return var;
    }
 
+   public void getURL() {
+      driver.get(BASE_URL);
+   }
 }

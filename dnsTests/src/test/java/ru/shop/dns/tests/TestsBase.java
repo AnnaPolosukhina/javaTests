@@ -6,15 +6,14 @@ import ru.shop.dns.appmanager.AppManager;
 
 public class TestsBase {
 
-   protected final AppManager app = new AppManager();  //делегирование
+   public static final AppManager app = new AppManager();  //делегирование
 
-   @BeforeClass
+   @BeforeSuite
    public void setUp() {
       app.init();
-
    }
 
-   @AfterClass
+   @AfterSuite
    public void tearDown() {
       app.stop();
    }

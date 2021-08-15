@@ -8,6 +8,8 @@ public class Test04СheckSearchHistory extends TestsBase {
    @Test
    public void test04CheckSearchHistory() {
 
+      app.getURL();
+
       String[] request = {
               "Колонки",
               "Компьютер",

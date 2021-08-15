@@ -9,6 +9,7 @@ public class Test02NoSearchResults extends TestsBase {
 
    @Test
    public void test0201CheckNoSearchResults() {
+      app.getURL();
       app.getSearch().searchItem(request2);
       Assert.assertTrue(app.getSearch().checkNoResults());
 

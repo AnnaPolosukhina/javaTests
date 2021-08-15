@@ -7,7 +7,7 @@ public class Test03CheckIconСlear extends TestsBase {
 
    @Test
    public void test03CheckIconClear() {
-
+      app.getURL();
       String request = "Что же мне найти";
       app.getSearch().typeRequest(request);
       Assert.assertFalse(app.getSearch().checkIsSearchStringEmpty());

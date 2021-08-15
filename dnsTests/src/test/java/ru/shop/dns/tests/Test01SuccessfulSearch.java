@@ -16,6 +16,7 @@ public class Test01SuccessfulSearch extends TestsBase {
 
    @Test
    public void test0101CheckSuccessfulSearch() {
+      app.getURL();
       app.getSearch().searchItem(request);
       Assert.assertTrue(app.getSearch().getNumberAllResults()>18);
 

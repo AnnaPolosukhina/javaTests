@@ -10,6 +10,7 @@ public class Test03CheckIconСlear extends TestsBase {
 
       String request = "Что же мне найти";
       app.getSearch().typeRequest(request);
+      Assert.assertFalse(app.getSearch().checkIsSearchStringEmpty());
       app.getSearch().clearRequest();
       Assert.assertTrue(app.getSearch().checkIsSearchStringEmpty());
 

@@ -13,6 +13,7 @@ public class HelperBase {
    public HelperBase(WebDriver driver) {
       this.driver = driver;
    }
+   public String xpathToSearchString = "//*[@id='header-search']//input";
 
    public void click(By locator) {
       Assert.assertTrue(isElementPresent(locator));

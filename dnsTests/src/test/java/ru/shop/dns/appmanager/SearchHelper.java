@@ -101,13 +101,17 @@ public class SearchHelper extends HelperBase {
    }
 
    public void typeRequest(String request) {
+      type(By.xpath(xpathToSearchString), request);
    }
 
    public void clearRequest() {
+      String xpath = "//span[contains(@class,'clear-visible')]";
+      click(By.xpath(xpath));
+
    }
 
    public boolean checkIsSearchStringEmpty() {
-      return true;
+      return findElement(By.xpath(xpathToSearchString)).getAttribute("value").equals("");
    }
 
    public boolean checkSearchHistory(String[] requestReverse) {

@@ -7,7 +7,10 @@ import org.testng.Assert;
 import ru.shop.dns.model.ItemInSearchResultsData;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static org.testng.Assert.assertEquals;
 
 public class SearchHelper extends HelperBase {
 
@@ -86,7 +89,9 @@ public class SearchHelper extends HelperBase {
       Assert.assertTrue(isElementPresent(By.xpath(xpathCheckNoResults)));
       WebElement element = findElement(By.xpath(xpathCheckNoResults));
       String str = element.getText();
-      if(str.contains("Странно, но ничего нет")){return true;}
+      if (str.contains("Странно, но ничего нет")) {
+         return true;
+      }
       return false;
    }
 
@@ -96,7 +101,9 @@ public class SearchHelper extends HelperBase {
       Assert.assertTrue(isElementPresent(By.xpath(xpathCheckNoResults)));
       WebElement element = findElement(By.xpath(xpathCheckNoResults));
       String str = element.getText();
-      if(str.contains("К сожалению, по вашему запросу ничего не найдено")){return true;}
+      if (str.contains("К сожалению, по вашему запросу ничего не найдено")) {
+         return true;
+      }
       return false;
    }
 
@@ -115,10 +122,36 @@ public class SearchHelper extends HelperBase {
    }
 
    public boolean checkSearchHistory(String[] requestReverse) {
-      return true;
+
+      findElement(By.xpath(xpathToSearchString)).click();
+      findElement(By.xpath(xpathToSearchString)).clear();
+      String xpath = "//div[@class=\"presearch__suggests\"]//a[(contains(@class, \"suggest_history\")) " +
+              "and not(contains(@class,'suggests_hidden'))]";
+
+      String[] result = new String[5];
+      for (int i=0; i<requestReverse.length; i++){
+         String str = findElement(By.xpath(xpath+"["+(i+1)+"]")).getText();
+         result[i] = str;
+      }
+      System.out.println(requestReverse.toString());
+      System.out.println(result.toString());
+
+      return Arrays.equals(requestReverse, result);
+
    }
 
-   public boolean checkSearchHistory(String requestReverse) {
+   public boolean checkStringIsNotInHistory(String requestReverse) {
+      String xpath = "//div[@class=\"presearch__suggests\"]//a[(contains(@class, \"suggest_history\")) " +
+              "and not(contains(@class,'suggests_hidden'))]";
+      String[] result = {};
+      for (int i = 0; i < 5; i++) {
+
+         if (isElementPresent(By.xpath(xpath + "[" + (i+1) + "]"))) {
+            String str = (findElement(By.xpath(xpath + "[" + (i+1) + "]"))).getText();
+            if (requestReverse.equals(str)) return false;
+         }
+
+      }
       return true;
    }
 

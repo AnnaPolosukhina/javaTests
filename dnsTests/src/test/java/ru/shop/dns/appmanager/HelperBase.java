@@ -40,6 +40,7 @@ public class HelperBase {
    }
 
    public WebElement findElement(By locator) {
+      System.out.println(locator);
       Assert.assertTrue(isElementPresent(locator));
       return driver.findElement(locator);
    }

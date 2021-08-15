@@ -24,7 +24,7 @@ public class Test04СheckSearchHistory extends TestsBase {
       }
 
       Assert.assertTrue(app.getSearch().checkSearchHistory(requestReverse));
-      Assert.assertFalse(app.getSearch().checkSearchHistory(request[0]));
+      Assert.assertTrue(app.getSearch().checkStringIsNotInHistory(request[0]));
 
    }
 

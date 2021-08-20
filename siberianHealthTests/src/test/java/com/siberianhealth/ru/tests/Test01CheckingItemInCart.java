@@ -20,7 +20,7 @@ public class Test01CheckingItemInCart extends TestsBase {
       app.getHelper().closePopUpWindow();                      // закрыть всплывающее информационное окошко, если выскакивает
       app.getHelper().goToBeautyCategory();                   // Зайти в категорию Красота
       itemName = app.getHelper().getItemName(num);           // Выбрать некий товар  (3й по списку в разделе красота, вернуть название)
-      price = app.getHelper().getItemPrice(num);
+      price = app.getHelper().getItemPrice(num);               // Запомнить цену
       app.getHelper().putInCart(itemName);                    // Добавить выбранный товар в корзину
       app.getHelper().goToCart();                             // Перейти в корзину
       app.getHelper().checkNameItemInCart(itemName);        // Проверить что корзина не пустая (/присутствует выбранный товар по имени)

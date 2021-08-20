@@ -17,15 +17,15 @@ public class AppManager {
       System.setProperty("webdriver.chrome.driver", "C:\\tools\\chromedriver.exe");
       driver = new ChromeDriver();
       driver.manage().window().setSize(new Dimension(1936, 1056));
-      driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+      driver.manage().timeouts().implicitlyWait(7000, TimeUnit.MILLISECONDS);
       driver.manage().timeouts().pageLoadTimeout(12000, TimeUnit.MILLISECONDS);
-      driver.manage().timeouts().setScriptTimeout(3000, TimeUnit.MILLISECONDS);
+      driver.manage().timeouts().setScriptTimeout(7000, TimeUnit.MILLISECONDS);
       searchHelper = new HelperMethods(driver);
    }
 
    public void stop() {
 
-   //   driver.quit();
+      //   driver.quit();
    }
 
    public HelperMethods getHelper() {

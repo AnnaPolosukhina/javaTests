@@ -19,23 +19,26 @@ public class HelperMethods {
 
 
    public void goToBeautyCategory() {
-      String xpathClose = "//button[@class=\"digi-search-highlight__close\"]";
-      if (isElementPresent(By.xpath(xpathClose))){
-         click(By.xpath(xpathClose));
-      }
       String xpathBeautyCategory = "//a[@href='/ru/shop/catalog/category/3/'][contains(.,'Красота')]";
       click(By.xpath(xpathBeautyCategory));
 
    }
 
+   public void closePopUpWindow() {
+      String xpathClose = "//button[@class=\"digi-search-highlight__close\"]";
+      if (isElementPresent(By.xpath(xpathClose))) {
+         click(By.xpath(xpathClose));
+      }
+   }
+
    public String selectAnyItem(int num) {
-      return getText(By.xpath("//div[@ec-product=\"product\"]["+ num+ "]//a[@itemprop=\"name\"]"));
+      return getText(By.xpath("//div[@ec-product=\"product\"][" + num + "]//a[@itemprop=\"name\"]"));
 
 
    }
 
    public void putInCart(String itemName) {
-      String xpathButtonPutInCart =       "//div[@class=\"products-catalog__info-container\"]/a[contains(.,'"+itemName+"')]" +
+      String xpathButtonPutInCart = "//div[@class=\"products-catalog__info-container\"]/a[contains(.,'" + itemName + "')]" +
               "/parent::*/parent::*//button[@ng-click=\"addToCart()\"]";
 
       Actions actions = new Actions(driver);
@@ -53,10 +56,10 @@ public class HelperMethods {
 
    public void checkBasketNotEmpty(String itemName, int i) {
       String xpath = "//div[contains(@class, 'cart-package ng-scope')]" +
-              "//a[contains(@class, 'os-product-card__title') and contains(text(), \""+itemName+"\")]";
+              "//a[contains(@class, 'os-product-card__title') and contains(text(), \"" + itemName + "\")]";
       Assert.assertTrue(isElementPresent(By.xpath(xpath)));  //проверка по названию
       String xpath2 = "//div[@ng-bind-html=\"userService.cart.amount\"]";
-      Assert.assertEquals(Integer.parseInt (driver.findElement(By.xpath(xpath2)).getText()), i);  //проверка по количеству
+      Assert.assertEquals(Integer.parseInt(driver.findElement(By.xpath(xpath2)).getText()), i);  //проверка по количеству
    }
 
    public void click(By locator) {
@@ -73,10 +76,10 @@ public class HelperMethods {
    }
 
    public boolean isElementPresent(By locator) {
-      try{
+      try {
          driver.findElement(locator);
          return true;
-      }  catch (NoSuchElementException exception){
+      } catch (NoSuchElementException exception) {
          return false;
       }
    }

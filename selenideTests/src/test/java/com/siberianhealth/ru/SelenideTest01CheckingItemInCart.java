@@ -38,7 +38,7 @@ public class SelenideTest01CheckingItemInCart {
       get(Locators.xpathItemPriceInCart).shouldHave(text(price));       // проверка что совпадает цена
       //проверки - общая цена и количество
       get(Locators.xpathTotalCountInCart).shouldHave(text(count));      //проверка общего количества товаров
-      $(Locators.cssTotalPriceInCart).shouldHave(text(count));          // проверка значения поля "Итого к оплате"
+      $(Locators.cssTotalPriceInCart).shouldHave(text(price));          // проверка значения поля "Итого к оплате"
 
 
    }

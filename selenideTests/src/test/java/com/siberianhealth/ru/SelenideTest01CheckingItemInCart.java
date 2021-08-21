@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selectors.*;
 public class SelenideTest01CheckingItemInCart {
 
    String itemName;     //здесь будем хранить название товара
-   int num = 3;         //добавляем например 3й товар товар
+   int num = 3;         //добавляем например 3й товар
    String count = "1";       //количество товара
    String price;           //здесь будем хранить цену товара
 

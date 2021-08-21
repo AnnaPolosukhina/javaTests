@@ -12,42 +12,33 @@ import org.openqa.selenium.interactions.Actions;
 public class HelperMethods {
    protected WebDriver driver;
 
-
    public HelperMethods(WebDriver driver) {
       this.driver = driver;
    }
 
-
    public void goToBeautyCategory() {
-      String xpathBeautyCategory = "//a[@href='/ru/shop/catalog/category/3/'][contains(.,'Красота')]";
-      click(By.xpath(xpathBeautyCategory));
-
+      click(By.xpath(Locators.xpathBeautyCategory));
    }
 
    public void closePopUpWindow() {
-      String xpathClose = "//button[@class=\"digi-search-highlight__close\"]";
-      if (isElementPresent(By.xpath(xpathClose))) {
-         click(By.xpath(xpathClose));
+      if (isElementPresent(By.xpath(Locators.xpathClosePopUpWindow))) {
+         click(By.xpath(Locators.xpathClosePopUpWindow));
       }
    }
 
    public String getItemName(int num) {
-      return getText(By.xpath("//div[@ec-product=\"product\"][" + num + "]//a[@itemprop=\"name\"]"));
+      return getText(By.xpath(Locators.xpathGetItemName(num)));
    }
 
    public void putInCart(String itemName) {
-      String xpathButtonPutInCart = "//div[@class=\"products-catalog__info-container\"]/a[contains(.,'" + itemName + "')]" +
-              "/parent::*/parent::*//button[@ng-click=\"addToCart()\"]";
-
       Actions actions = new Actions(driver);
-      WebElement target = driver.findElement(By.xpath(xpathButtonPutInCart));
+      WebElement target = driver.findElement(By.xpath(Locators.xpathButtonPutInCart(itemName)));
       actions.moveToElement(target).perform();
-      click(By.xpath(xpathButtonPutInCart));
+      click(By.xpath(Locators.xpathButtonPutInCart(itemName)));
    }
 
    public void goToCart() {
-      String xpathGoToCart = "//a[@href=\"/ru/shop/cart/\"]";
-      click(By.xpath(xpathGoToCart));
+      click(By.xpath(Locators.xpathGoToCart));
    }
 
    public void click(By locator) {
@@ -72,43 +63,36 @@ public class HelperMethods {
       }
    }
 
-
-
    public int getItemPrice(int num) {
-      String xpathItemPrice = "//div[@ec-product='product']["+num+"]//span[contains(@ng-bind-html, \"product.price.current\")]/span[1]";
-      System.out.println(xpathItemPrice);
-      return Integer.parseInt(getText(By.xpath(xpathItemPrice)));
+      System.out.println(Locators.xpathItemPrice(num));
+      return Integer.parseInt(getText(By.xpath(Locators.xpathItemPrice(num))));
    }
 
    public void checkNameItemInCart(String itemName) {
-      String xpathName = "(//div[@class=\"cart-package__content\"]//div[contains(@class, \"column _name\")])[1]" +
-              "//a[contains(@class, 'os-product-card__title') and contains(text(), \"" + itemName + "\")]";
-      Assert.assertTrue(isElementPresent(By.xpath(xpathName)));  //проверка по названию
+      Assert.assertTrue(isElementPresent(By.xpath(Locators.xpathName(itemName))));  //проверка по названию
    }
 
    public void checkPriceInCart(int price) {
-      String xpathItemPriceInCart = "(//div[@class=\"cart-package__content\"]//div[contains(@class, \"cart-package__item__price\")])[1]";
-      int priceInCart = Integer.parseInt(getText(By.xpath(xpathItemPriceInCart)));
+      String str = getText(By.xpath(Locators.xpathItemPriceInCart)).replaceAll("[^0-9]", "");
+      int priceInCart = Integer.parseInt(str);
+      System.out.println(priceInCart +" "+price);
       Assert.assertEquals(priceInCart, price);
    }
 
    public void checkCountInCart(int count) {
-      String xpathCount = "(//div[@class=\"cart-package__content\"]//div[contains(@class, \"column _count\")])[1]//input";
-      String tmp = driver.findElement(By.xpath(xpathCount)).getAttribute("value");
-      int countInCart = Integer.parseInt((tmp).replaceAll("[^0-9]", ""));
+      String tmp = driver.findElement(By.xpath(Locators.xpathCount)).getAttribute("value");
+      int countInCart = Integer.parseInt(tmp);
       Assert.assertEquals(countInCart, count);  //проверка по количеству
    }
 
    public void checkTotalCountInCart(int count) {
-      String xpathTotalCountInCart ="//div[@ng-bind-html=\"userService.cart.amount\"]";
-      int totalCountInCart = Integer.parseInt(getText(By.xpath(xpathTotalCountInCart)));
+      int totalCountInCart = Integer.parseInt(getText(By.xpath(Locators.xpathTotalCountInCart)));
       Assert.assertEquals(totalCountInCart, count);
 
    }
 
    public void checkTotalPriceInCart(int price) {
-      String xpathTotalPriceInCart ="//div[contains(@class, \"total-cart-block__price\")]";
-      int totalPriceInCart = Integer.parseInt(getText(By.xpath(xpathTotalPriceInCart)));
+      int totalPriceInCart = Integer.parseInt(getText(By.xpath(Locators.xpathTotalPriceInCart)));
       Assert.assertEquals(totalPriceInCart, price);
    }
 }

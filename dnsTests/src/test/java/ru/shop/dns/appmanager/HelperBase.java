@@ -74,7 +74,8 @@ public class HelperBase {
       try{
          driver.findElement(locator);
          return true;
-      }  catch (NoSuchElementException exception){
+      }  catch (NoSuchElementException e){
+         e.printStackTrace();
          return false;
       }
    }

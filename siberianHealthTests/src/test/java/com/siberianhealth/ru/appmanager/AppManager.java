@@ -16,16 +16,16 @@ public class AppManager {
    public void init() {
       System.setProperty("webdriver.chrome.driver", "C:\\tools\\chromedriver.exe");
       driver = new ChromeDriver();
-      driver.manage().window().setSize(new Dimension(1936, 1056));
-      driver.manage().timeouts().implicitlyWait(7000, TimeUnit.MILLISECONDS);
-      driver.manage().timeouts().pageLoadTimeout(12000, TimeUnit.MILLISECONDS);
-      driver.manage().timeouts().setScriptTimeout(7000, TimeUnit.MILLISECONDS);
+      driver.manage().window().setSize(new Dimension(1920, 1080));
+      driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
+      driver.manage().timeouts().pageLoadTimeout(20000, TimeUnit.MILLISECONDS);
+      driver.manage().timeouts().setScriptTimeout(20000, TimeUnit.MILLISECONDS);
       searchHelper = new HelperMethods(driver);
    }
 
    public void stop() {
 
-      //   driver.quit();
+         driver.quit();
    }
 
    public HelperMethods getHelper() {

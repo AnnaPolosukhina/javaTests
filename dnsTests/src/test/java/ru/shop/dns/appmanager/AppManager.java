@@ -19,9 +19,9 @@ public class AppManager {
    public void init() {
       System.setProperty("webdriver.chrome.driver", "C:\\tools\\chromedriver.exe");
       driver = new ChromeDriver();
-      driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+      driver.manage().timeouts().implicitlyWait(13000, TimeUnit.MILLISECONDS);
       driver.manage().timeouts().pageLoadTimeout(12000, TimeUnit.MILLISECONDS);
-      driver.manage().timeouts().setScriptTimeout(3000, TimeUnit.MILLISECONDS);
+      driver.manage().timeouts().setScriptTimeout(13000, TimeUnit.MILLISECONDS);
       driver.manage().window().setSize(new Dimension(1936, 1056));
       searchHelper = new SearchHelper(driver);
       navigationHelper = new NavigationHelper(driver);

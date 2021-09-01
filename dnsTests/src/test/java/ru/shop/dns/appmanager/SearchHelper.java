@@ -89,10 +89,7 @@ public class SearchHelper extends HelperBase {
       Assert.assertTrue(isElementPresent(By.xpath(xpathCheckNoResults)));
       WebElement element = findElement(By.xpath(xpathCheckNoResults));
       String str = element.getText();
-      if (str.contains("Странно, но ничего нет")) {
-         return true;
-      }
-      return false;
+      return str.contains("Странно, но ничего нет");
    }
 
    public boolean checkNoResults2() {
@@ -101,10 +98,7 @@ public class SearchHelper extends HelperBase {
       Assert.assertTrue(isElementPresent(By.xpath(xpathCheckNoResults)));
       WebElement element = findElement(By.xpath(xpathCheckNoResults));
       String str = element.getText();
-      if (str.contains("К сожалению, по вашему запросу ничего не найдено")) {
-         return true;
-      }
-      return false;
+      return str.contains("К сожалению, по вашему запросу ничего не найдено");
    }
 
    public void typeRequest(String request) {

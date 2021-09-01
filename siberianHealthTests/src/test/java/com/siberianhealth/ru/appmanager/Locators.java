@@ -13,13 +13,12 @@ public class Locators {
    //перейти в корзину
    public static String xpathGoToCart = "//a[@href=\"/ru/shop/cart/\"]";
    //цена на товар в каталоге Красота
-   public static String xpathItemPrice(int num){
-      return "//div[@ec-product='product']["+num+"]//span[contains(@ng-bind-html, \"product.price.current\")]/span[1]";  }
+   public static String xpathItemPrice = "//div[@ec-product='product']//span[contains(@ng-bind-html, \"product.price.current\")]/span[1]";
 
    //проверка имени товара в корзине
    public static String xpathName(String itemName){
       return  "(//div[@class=\"cart-package__content\"]//div[contains(@class, \"column _name\")])[1]" +
-           "//a[contains(@class, 'os-product-card__title') and contains(text(), \"" + itemName + "\")]";   }
+              "//a[contains(@class, 'os-product-card__title') and contains(text(), \"" + itemName + "\")]";   }
    //цена товара в корзине
    public static String xpathItemPriceInCart = "(//div[@class=\"cart-package__content\"]//div[contains(@class, \"cart-package__item__price\")])[1]";
    //количество товара в корзине
@@ -29,8 +28,7 @@ public class Locators {
    //общая цена за все товары в корзине
    public static String xpathTotalPriceInCart ="//div[contains(@class, \"total-cart-block__price\")]";
    //название товара в каталоге красота (по номеру num)
-   public static String xpathGetItemName (int num){
-      return "//div[@ec-product=\"product\"][" + num + "]//a[@itemprop=\"name\"]";
-   }
+   public static String xpathGetItemName = "//div[@ec-product=\"product\"]//a[@itemprop=\"name\"]";
+
 
 }

@@ -34,8 +34,8 @@ public class SelenideTest01CheckingItemInCart {
       $(Locators.cssGoToCart).click();                                  // Перейти в корзину
       //проверки в корзине
       get(Locators.xpathNameInCart).shouldHave(text(itemName));         // Проверить имя товара в листе товаров
-      get(Locators.xpathCountInCart).shouldHave(value(count));          //проверка что совпадает количество
-      get(Locators.xpathItemPriceInCart).shouldHave(text(price));       // проверка что совпадает цена
+      $x(Locators.xpathCountInCart).shouldHave(value(count));          //проверка что совпадает количество
+      $x(Locators.xpathItemPriceInCart).shouldHave(text(price));       // проверка что совпадает цена
       //проверки - общая цена и количество
       get(Locators.xpathTotalCountInCart).shouldHave(text(count));      //проверка общего количества товаров
       $(Locators.cssTotalPriceInCart).shouldHave(text(price));          // проверка значения поля "Итого к оплате"

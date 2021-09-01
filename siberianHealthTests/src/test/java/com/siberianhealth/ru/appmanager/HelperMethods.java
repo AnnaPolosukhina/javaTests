@@ -1,5 +1,6 @@
 package com.siberianhealth.ru.appmanager;
 
+import com.siberianhealth.ru.data.Item;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +9,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.openqa.selenium.interactions.Actions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HelperMethods {
    protected WebDriver driver;
@@ -27,7 +31,7 @@ public class HelperMethods {
    }
 
    public String getItemName(int num) {
-      return getText(By.xpath(Locators.xpathGetItemName(num)));
+      return   driver.findElements(By.xpath(Locators.xpathGetItemName)).get(num).getText();
    }
 
    public void putInCart(String itemName) {
@@ -42,9 +46,6 @@ public class HelperMethods {
    }
 
    public void click(By locator) {
-      WebDriverWait wait = new WebDriverWait(driver, 10);
-      wait.until(ExpectedConditions.elementToBeClickable
-              (locator));
       Assert.assertTrue(isElementPresent(locator));
       driver.findElement(locator).click();
    }
@@ -63,9 +64,17 @@ public class HelperMethods {
       }
    }
 
+   public boolean isElementPresent(WebElement we) {
+      try {
+         we.isDisplayed();
+         return true;
+      } catch (NoSuchElementException exception) {
+         return false;
+      }
+   }
+
    public int getItemPrice(int num) {
-      System.out.println(Locators.xpathItemPrice(num));
-      return Integer.parseInt(getText(By.xpath(Locators.xpathItemPrice(num))));
+      return Integer.parseInt(driver.findElements(By.xpath(Locators.xpathItemPrice)).get(num).getText());
    }
 
    public void checkNameItemInCart(String itemName) {
@@ -92,7 +101,50 @@ public class HelperMethods {
    }
 
    public void checkTotalPriceInCart(int price) {
-      int totalPriceInCart = Integer.parseInt(getText(By.xpath(Locators.xpathTotalPriceInCart)));
+      int totalPriceInCart = Integer.parseInt(getText(By.xpath(Locators.xpathTotalPriceInCart)).replaceAll("[^0-9]", ""));
       Assert.assertEquals(totalPriceInCart, price);
+   }
+
+   public List<Item> getItemsList() {
+      List<Item> items = new ArrayList<Item>();
+      List<WebElement> elements = driver.findElements(By.cssSelector("div.products-catalog__item"));
+
+      for (int i = 0; i<30; i++){
+         WebElement el = elements.get(i);
+         String name = (el.findElement(By.xpath("div[@class=\"products-catalog__info-container\"]/a"))).getText();
+         String description = null;
+         if(el.findElement(By.xpath("div[@class=\"products-catalog__info-container\"]/div[@class=\"os-product-card__series ng-binding ng-scope\"]")).isDisplayed()){
+            description = (el.findElement(By.xpath("div[@class=\"products-catalog__info-container\"]/div[@class=\"os-product-card__series ng-binding ng-scope\"]"))).getText();
+         }
+         int id = Integer.parseInt((el.findElement(By.xpath("div[@class=\"products-catalog__info-container\"]/ul/li"))).getText().replaceAll("[^0-9]", ""));
+         Item item = new Item(name, description, null, 0, id);
+         System.out.println(name);
+//         //System.out.println("el.getAccessibleName() = "+el.getAccessibleName().toString());
+//          System.out.println("el.getAriaRole() = "+el.getAriaRole());
+//         System.out.println("el.getAttribute(\"class\")  = "+el.getAttribute("class"));
+//         System.out.println("el.getCssValue(\"position\") = "+el.getCssValue("position"));
+//         System.out.println("el.getCssValue(\"z-index\") = "+el.getCssValue("z-index"));
+//
+//         //System.out.println("el.getDomAttribute(\"autofocus\") = "+el.getDomAttribute("autofocus"));
+//
+//         //System.out.println("el.getDomProperty(\"autofocus\") = "+el.getDomProperty("autofocus"));
+//         System.out.println("el.getLocation().toString() = "+el.getLocation().toString());
+//         System.out.println("el.getRect().toString() = "+el.getRect().toString());
+//         System.out.println("el.getSize().toString() = "+el.getSize().toString());
+//         System.out.println("el.getTagName() = "+el.getTagName());
+//         System.out.println("el.getText() = "+el.getText());
+//         System.out.println("el.toString() = "+el.toString());
+
+         items.add(item);
+
+      }
+
+      for (Item item : items) {
+         System.out.println(item);
+
+      }
+
+
+      return items;
    }
 }
